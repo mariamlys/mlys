@@ -1,0 +1,91 @@
+---
+import { SITE } from '../config/site';
+
+interface Props {
+  lang: 'fr' | 'en';
+  path?: string;
+}
+const { lang, path = '' } = Astro.props;
+
+// Libellés de nav + slugs équivalents FR/EN (clé = slug FR neutre)
+const NAV = [
+  { fr: 'Studio',        en: 'Studio',     frSlug: '/studio',         enSlug: '/studio' },
+  { fr: 'Suite',         en: 'Suite',      frSlug: '/suite',          enSlug: '/suite' },
+  { fr: 'Restaurant',    en: 'Restaurant', frSlug: '/restaurant',     enSlug: '/restaurant' },
+  { fr: 'Événements',    en: 'Events',     frSlug: '/evenements',     enSlug: '/events' },
+  { fr: 'Localisation',  en: 'Location',   frSlug: '/localisation',   enSlug: '/location' },
+  { fr: 'À propos',      en: 'About',      frSlug: '/a-propos',       enSlug: '/about' },
+  { fr: 'Contact',       en: 'Contact',    frSlug: '/contact',        enSlug: '/contact' },
+];
+
+const t = {
+  fr: { book: 'Réserver', home: 'Accueil' },
+  en: { book: 'Book now', home: 'Home' },
+}[lang];
+
+const base = `/${lang}`;
+const bookHref = lang === 'fr' ? '/fr/reservation' : '/en/booking';
+
+// Lien vers la même page dans l'autre langue (sinon accueil de l'autre langue)
+const other = lang === 'fr' ? 'en' : 'fr';
+const match = NAV.find((n) => (lang === 'fr' ? n.frSlug : n.enSlug) === path);
+const otherPath = match ? `/${other}${other === 'fr' ? match.frSlug : match.enSlug}` : `/${other}`;
+---
+
+<header class="sticky top-0 z-50 bg-ivory/90 backdrop-blur-sm border-b border-grey-3">
+  <div class="container-x flex items-center justify-between h-20">
+    <!-- Logo -->
+    <a href={`${base}`} class="leading-none">
+      <span class="block font-display text-2xl tracking-tight text-black">M'LYS</span>
+      <span class="block text-[0.62rem] tracking-[0.35em] uppercase text-gold-dark -mt-1">Appart</span>
+    </a>
+
+    <!-- Nav desktop -->
+    <nav class="hidden lg:flex items-center gap-8">
+      {NAV.map((n) => (
+        <a
+          href={`${base}${lang === 'fr' ? n.frSlug : n.enSlug}`}
+          class="text-sm text-black-soft hover:text-gold-dark transition-colors"
+        >
+          {lang === 'fr' ? n.fr : n.en}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-5">
+      <!-- Sélecteur de langue -->
+      <div class="text-xs tracking-widest uppercase text-grey-1">
+        <a href={lang === 'fr' ? `/fr${path}` : otherPath} class={lang === 'fr' ? 'text-black font-medium' : 'hover:text-gold-dark'}>FR</a>
+        <span class="text-grey-3 mx-1">/</span>
+        <a href={lang === 'en' ? `/en${path}` : otherPath} class={lang === 'en' ? 'text-black font-medium' : 'hover:text-gold-dark'}>EN</a>
+      </div>
+
+      <a href={bookHref} class="btn btn-gold hidden sm:inline-flex !px-5 !py-2.5">{t.book}</a>
+
+      <!-- Burger mobile -->
+      <button id="navToggle" class="lg:hidden text-black" aria-label="Menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="3" y1="7" x2="21" y2="7" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="17" x2="21" y2="17" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menu mobile -->
+  <nav id="mobileMenu" class="hidden lg:hidden border-t border-grey-3 bg-ivory">
+    <div class="container-x py-4 flex flex-col gap-1">
+      {NAV.map((n) => (
+        <a href={`${base}${lang === 'fr' ? n.frSlug : n.enSlug}`} class="py-2.5 text-black-soft border-b border-grey-3/60">
+          {lang === 'fr' ? n.fr : n.en}
+        </a>
+      ))}
+      <a href={bookHref} class="btn btn-gold mt-3">{t.book}</a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+  toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+</script>

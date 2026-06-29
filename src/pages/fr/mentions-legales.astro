@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { SITE } from '../../config/site';
+---
+
+<Layout
+  lang="fr"
+  path="/mentions-legales"
+  title="Mentions légales"
+  description="Mentions légales de M'LYS APPART, Conakry."
+>
+  <PageHero eyebrow="Informations" title="Mentions légales" />
+
+  <section class="section">
+    <div class="container-x max-w-3xl prose-mlys text-grey-1 space-y-6 text-sm leading-relaxed">
+      <div>
+        <h2 class="text-xl text-black">Éditeur du site</h2>
+        <p class="mt-2">
+          M'LYS APPART<br />
+          {SITE.address.line2}, {SITE.address.line1}<br />
+          {SITE.address.city}, {SITE.address.country}<br />
+          Téléphone : {SITE.phone}<br />
+          E-mail : {SITE.email}
+        </p>
+        {/* TODO: compléter avec la direction — raison sociale, RCCM, NIF,
+            directeur de la publication, capital social. */}
+        <p class="mt-2 text-grey-2"><em>Raison sociale, RCCM, NIF et directeur de publication : à compléter.</em></p>
+      </div>
+      <div>
+        <h2 class="text-xl text-black">Hébergement</h2>
+        <p class="mt-2">Site hébergé par Netlify, Inc.</p>
+      </div>
+      <div>
+        <h2 class="text-xl text-black">Propriété intellectuelle</h2>
+        <p class="mt-2">
+          L'ensemble des contenus de ce site (textes, photographies, marques) est la propriété
+          de M'LYS APPART, sauf mention contraire. Toute reproduction sans autorisation est interdite.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

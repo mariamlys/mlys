@@ -1,0 +1,21 @@
+---
+interface Props {
+  images: { src: string; alt: string }[]; // attend 3 images
+}
+const { images } = Astro.props;
+const [a, b, c] = images;
+---
+
+<div class="grid md:grid-cols-2 gap-4">
+  <div class="aspect-[4/5] md:aspect-auto overflow-hidden bg-ivory-dark">
+    <img src={a?.src} alt={a?.alt} class="w-full h-full object-cover" />
+  </div>
+  <div class="grid grid-rows-2 gap-4">
+    <div class="aspect-[16/9] overflow-hidden bg-ivory-dark">
+      <img src={b?.src} alt={b?.alt} class="w-full h-full object-cover" />
+    </div>
+    <div class="aspect-[16/9] overflow-hidden bg-ivory-dark">
+      <img src={c?.src} alt={c?.alt} class="w-full h-full object-cover" />
+    </div>
+  </div>
+</div>

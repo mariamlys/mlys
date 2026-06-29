@@ -1,0 +1,21 @@
+---
+interface Props {
+  image?: string;
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+}
+const { image = '/images/facade.png', eyebrow, title, subtitle } = Astro.props;
+---
+
+<section class="relative h-[46vh] min-h-[340px] flex items-end">
+  <div class="absolute inset-0 bg-black-soft">
+    <img src={image} alt="" class="w-full h-full object-cover opacity-85" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/20"></div>
+  </div>
+  <div class="container-x relative z-10 pb-12 text-ivory max-w-2xl">
+    {eyebrow && <span class="eyebrow !text-gold">{eyebrow}</span>}
+    <h1 class="mt-3 text-3xl md:text-5xl" set:html={title}></h1>
+    {subtitle && <p class="mt-4 text-grey-2 max-w-xl">{subtitle}</p>}
+  </div>
+</section>

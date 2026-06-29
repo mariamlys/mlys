@@ -1,0 +1,136 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import PillarCard from '../../components/PillarCard.astro';
+import RoomCard from '../../components/RoomCard.astro';
+import Distances from '../../components/Distances.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import Quote from '../../components/Quote.astro';
+import { ROOMS, DISTANCES_FR } from '../../config/site';
+---
+
+<Layout
+  lang="fr"
+  path=""
+  title="L'appart-hôtel du quartier d'affaires"
+  description="M'LYS APPART : studios et suites au cœur de Kaloum, à pied des ambassades et des ministères. Tarifs transparents, petit-déjeuner inclus, conditions négociables pour les longs séjours."
+>
+  <Hero
+    image="/images/facade.png"
+    eyebrow="Conakry · Kaloum"
+    title={`Vivre Conakry <span class="accent-italic">comme à la maison</span>,<br/>au cœur de Kaloum.`}
+    subtitle="L'appart-hôtel du quartier d'affaires. Au pied des ambassades, des ministères et des banques — à un prix juste et affiché."
+    ctaLabel="Voir nos hébergements"
+    ctaHref="/fr/studio"
+    ctaSecondaryLabel="Demander un devis"
+    ctaSecondaryHref="/fr/contact"
+  />
+
+  <!-- Deux axes : localisation + prix -->
+  <section class="section">
+    <div class="container-x grid md:grid-cols-2 gap-12 md:gap-16">
+      <div>
+        <span class="eyebrow">La localisation</span>
+        <h2 class="mt-4 text-3xl md:text-4xl">À pied de tout ce qui compte à Kaloum.</h2>
+        <p class="mt-5 text-grey-1">
+          Au cœur du quartier d'Almamya, à six minutes à pied des ambassades de France et d'Allemagne,
+          à dix minutes du Palais Présidentiel et des ministères. Aucun rendez-vous d'affaires
+          à Kaloum ne nécessite de voiture.
+        </p>
+        <a href="/fr/localisation" class="link-underline inline-block mt-6 text-sm">Voir la localisation et les accès</a>
+      </div>
+      <div>
+        <span class="eyebrow">Le prix</span>
+        <h2 class="mt-4 text-3xl md:text-4xl">Un tarif <span class="accent-italic">juste</span> et transparent.</h2>
+        <p class="mt-5 text-grey-1">
+          Tarifs publics affichés, en francs guinéens avec équivalents en euros et en dollars.
+          Petit-déjeuner buffet inclus. Conditions dégressives et négociables pour les longs séjours
+          et les comptes entreprises, ambassades et ONG.
+        </p>
+        <a href="/fr/contact" class="link-underline inline-block mt-6 text-sm">Demander une offre entreprise</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Piliers -->
+  <section class="section bg-ivory-dark">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <span class="eyebrow">La maison</span>
+        <h2 class="mt-4 text-3xl md:text-4xl">Quatre raisons de choisir M'LYS APPART.</h2>
+      </div>
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <PillarCard number="01" title="L'emplacement le plus stratégique" text="Kaloum, l'unique quartier d'affaires de Conakry. Ambassades, ministères et banques à quelques minutes à pied." />
+        <PillarCard number="02" title="Un prix juste et transparent" text="Tarifs affichés, dégressifs sur la durée. Pas de surprise, pas de commission d'intermédiaire." />
+        <PillarCard number="03" title="Le format appart, vraiment équipé" text="Studios avec kitchenette, suites deux pièces avec salon séparé. Pensés pour les séjours qui durent." />
+        <PillarCard number="04" title="Le restaurant La Diversité Signature" text="Petit-déjeuner buffet inclus, cuisine d'ici et d'ailleurs en service continu." />
+      </div>
+    </div>
+  </section>
+
+  <!-- Hébergements -->
+  <section class="section">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Hébergement</span>
+        <h2 class="mt-4 text-3xl md:text-4xl">Studios et suites, pour quelques nuits ou plusieurs mois.</h2>
+      </div>
+      <div class="mt-12 grid md:grid-cols-2 gap-8">
+        <RoomCard
+          image={ROOMS.studio.image}
+          eyebrow="1 personne"
+          title="Studio"
+          text="Coin salon, bureau de travail et kitchenette équipée. L'essentiel d'un chez-soi pour les missions de plusieurs semaines."
+          priceGNF={ROOMS.studio.priceGNF}
+          perNight="nuit"
+          ctaLabel="Découvrir"
+          ctaHref="/fr/studio"
+        />
+        <RoomCard
+          image={ROOMS.suite.image}
+          eyebrow="Jusqu'à 3 personnes"
+          title="Suite 2 pièces"
+          text="Salon séparé de 25 m², cuisine américaine, chambre indépendante. Pour les familles et les séjours accompagnés."
+          priceGNF={ROOMS.suite.priceGNF}
+          perNight="nuit"
+          ctaLabel="Découvrir"
+          ctaHref="/fr/suite"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Citation -->
+  <section class="section bg-black text-ivory">
+    <div class="container-x">
+      <Quote text="L'adresse qui vous rapproche de tout, sans jamais vous éloigner de chez vous." author="M'LYS APPART · Kaloum" />
+    </div>
+  </section>
+
+  <!-- Localisation -->
+  <section class="section">
+    <div class="container-x grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <span class="eyebrow">Localisation</span>
+        <h2 class="mt-4 text-3xl md:text-4xl">Tout Kaloum, à quelques pas.</h2>
+        <p class="mt-5 text-grey-1">Quartier Almamya, angle 5ème Boulevard et Rue KA 038.</p>
+        <div class="mt-8"><Distances items={DISTANCES_FR.slice(0, 6)} /></div>
+        <a href="/fr/localisation" class="link-underline inline-block mt-6 text-sm">Voir toutes les distances</a>
+      </div>
+      <MapEmbed lang="fr" />
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="section bg-ivory-dark">
+    <div class="container-x text-center max-w-2xl mx-auto">
+      <span class="eyebrow">Réservation</span>
+      <h2 class="mt-4 text-3xl md:text-4xl">Planifiez votre séjour à Kaloum.</h2>
+      <p class="mt-5 text-grey-1">Réservez en ligne ou demandez une offre sur mesure pour votre entreprise.</p>
+      <div class="mt-8 flex flex-wrap gap-4 justify-center">
+        <a href="/fr/reservation" class="btn btn-gold">Réserver</a>
+        <a href="/fr/contact" class="btn btn-outline">Demander un devis</a>
+      </div>
+    </div>
+  </section>
+</Layout>

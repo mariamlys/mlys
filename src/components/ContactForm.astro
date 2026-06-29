@@ -1,0 +1,109 @@
+---
+interface Props { lang: 'fr' | 'en'; }
+const { lang } = Astro.props;
+
+// TODO: créer un compte Formspree et renseigner PUBLIC_FORM_ENDPOINT dans .env
+const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT || 'https://formspree.io/f/YOUR_FORM_ID';
+
+const t = {
+  fr: {
+    name: 'Nom complet', email: 'E-mail', phone: 'Téléphone',
+    org: 'Société / Organisation', arrival: "Date d'arrivée", departure: 'Date de départ',
+    type: 'Type de logement', context: 'Contexte du séjour',
+    occ: "Nombre d'occupants", b2b: 'Tarifs B2B négociables', news: 'Recevoir la newsletter',
+    submit: 'Envoyer ma demande', required: 'obligatoire',
+    typeOpts: ['Studio', 'Suite', 'Événement', 'Privatisation', 'Je ne sais pas'],
+    occOpts: ['1', '2', '3', 'Plus'],
+    placeholder: 'Dates approximatives, nombre de personnes, durée prévue, besoins particuliers…',
+  },
+  en: {
+    name: 'Full name', email: 'Email', phone: 'Phone',
+    org: 'Company / Organisation', arrival: 'Arrival date', departure: 'Departure date',
+    type: 'Accommodation type', context: 'About your stay',
+    occ: 'Number of guests', b2b: 'Negotiable B2B rates', news: 'Subscribe to newsletter',
+    submit: 'Send my request', required: 'required',
+    typeOpts: ['Studio', 'Suite', 'Event', 'Private hire', "I'm not sure"],
+    occOpts: ['1', '2', '3', 'More'],
+    placeholder: 'Approximate dates, number of guests, expected length of stay, special requests…',
+  },
+}[lang];
+---
+
+<form action={endpoint} method="POST" class="space-y-6">
+  {/* Honeypot anti-spam : invisible pour l'humain, piège pour les bots.
+      Formspree ignore tout envoi où ce champ est rempli. */}
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
+
+  <div class="grid sm:grid-cols-2 gap-6">
+    <label class="block">
+      <span class="text-sm text-black-soft">{t.name} <span class="text-gold-dark">*</span></span>
+      <input type="text" name="name" required class="form-input" />
+    </label>
+    <label class="block">
+      <span class="text-sm text-black-soft">{t.email} <span class="text-gold-dark">*</span></span>
+      <input type="email" name="email" required class="form-input" />
+    </label>
+    <label class="block">
+      <span class="text-sm text-black-soft">{t.phone}</span>
+      <input type="tel" name="phone" class="form-input" />
+    </label>
+    <label class="block">
+      <span class="text-sm text-black-soft">{t.org}</span>
+      <input type="text" name="organisation" class="form-input" />
+    </label>
+    <label class="block">
+      <span class="text-sm text-black-soft">{t.arrival}</span>
+      <input type="date" name="arrival" class="form-input" />
+    </label>
+    <label class="block">
+      <span class="text-sm text-black-soft">{t.departure}</span>
+      <input type="date" name="departure" class="form-input" />
+    </label>
+    <label class="block">
+      <span class="text-sm text-black-soft">{t.type}</span>
+      <select name="accommodation" class="form-input">
+        {t.typeOpts.map((o) => <option value={o}>{o}</option>)}
+      </select>
+    </label>
+    <label class="block">
+      <span class="text-sm text-black-soft">{t.occ}</span>
+      <select name="guests" class="form-input">
+        {t.occOpts.map((o) => <option value={o}>{o}</option>)}
+      </select>
+    </label>
+  </div>
+
+  <label class="block">
+    <span class="text-sm text-black-soft">{t.context}</span>
+    <textarea name="message" rows="4" placeholder={t.placeholder} class="form-input"></textarea>
+  </label>
+
+  <div class="space-y-3">
+    <label class="flex items-center gap-3 text-sm text-black-soft">
+      <input type="checkbox" name="b2b" class="accent-[#B8945A] w-4 h-4" /> {t.b2b}
+    </label>
+    <label class="flex items-center gap-3 text-sm text-black-soft">
+      <input type="checkbox" name="newsletter" class="accent-[#B8945A] w-4 h-4" /> {t.news}
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-dark">{t.submit}</button>
+</form>
+
+<style>
+  .form-input {
+    width: 100%;
+    margin-top: 0.4rem;
+    padding: 0.7rem 0.9rem;
+    background: #fff;
+    border: 1px solid var(--color-grey-3);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-black);
+    transition: border-color 0.2s;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: var(--color-gold);
+  }
+</style>

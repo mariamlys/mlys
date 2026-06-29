@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import { ROOMS } from '../../config/site';
+
+const equipements = [
+  'Salon séparé de 25 m² avec canapé convertible', 'Cuisine américaine (plaques, four, micro-ondes, réfrigérateur)',
+  'Bureau et table à manger', 'Chambre séparée avec lit double', 'Salle de bains complète',
+  'Climatisation indépendante par pièce', 'Smart TV HD', 'Wi-Fi haut débit', 'Coffre-fort', 'Téléphone', 'Mini-bar',
+];
+---
+
+<Layout
+  lang="fr"
+  path="/suite"
+  title="Suite 2 pièces"
+  description="Suite 2 pièces M'LYS APPART à Kaloum : salon séparé, cuisine américaine, chambre indépendante. 1 200 000 GNF la nuit, petit-déjeuner inclus. Jusqu'à 3 personnes."
+  image={ROOMS.suite.image}
+>
+  <PageHero
+    image={ROOMS.suite.image}
+    eyebrow="Jusqu'à 3 personnes"
+    title="Suite 2 pièces"
+    subtitle="Un véritable appartement, pour les familles en réinstallation, les cadres accompagnés et les diplomates en transition."
+  />
+
+  <section class="section">
+    <div class="container-x grid lg:grid-cols-[1fr_360px] gap-12">
+      <div>
+        <span class="eyebrow">L'espace</span>
+        <h2 class="mt-4 text-3xl">Le confort d'un appartement, le service d'un hôtel.</h2>
+        <p class="mt-5 text-grey-1 max-w-2xl">
+          Un salon séparé de 25 m², une cuisine américaine entièrement équipée et une chambre indépendante :
+          de l'espace pour recevoir, cuisiner et se retrouver en famille, avec la climatisation réglable
+          pièce par pièce et tout le service d'un appart-hôtel.
+        </p>
+
+        <h3 class="mt-10 text-xl">Équipements</h3>
+        <ul class="mt-5 grid sm:grid-cols-2 gap-x-8 gap-y-2.5">
+          {equipements.map((e) => (
+            <li class="flex items-start gap-2.5 text-sm text-black-soft">
+              <span class="text-gold mt-1.5 w-1 h-1 rounded-full bg-gold flex-shrink-0"></span>{e}
+            </li>
+          ))}
+        </ul>
+
+      </div>
+
+      <PriceCard
+        priceGNF={ROOMS.suite.priceGNF}
+        label="par nuit"
+        note="Petit-déjeuner buffet inclus. Tarifs dégressifs sur demande pour les longs séjours et comptes entreprises."
+        ctaLabel="Réserver"
+        ctaHref="/fr/reservation"
+        secondaryLabel="Demander un devis"
+        secondaryHref="/fr/contact"
+      />
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,48 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Distances from '../../components/Distances.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import { SITE, DISTANCES_FR } from '../../config/site';
+---
+
+<Layout
+  lang="fr"
+  path="/localisation"
+  title="Localisation & accès"
+  description="M'LYS APPART est situé au cœur d'Almamya, Kaloum : à pied des ambassades, ministères, banques et de la Banque Centrale de Conakry. Adresse, carte et distances."
+>
+  <PageHero
+    eyebrow="Kaloum · Almamya"
+    title="Au cœur du quartier d'affaires."
+    subtitle="Tout Kaloum à quelques pas : ambassades, ministères, banques et institutions."
+  />
+
+  <section class="section">
+    <div class="container-x grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <span class="eyebrow">Adresse</span>
+        <h2 class="mt-4 text-3xl">M'LYS APPART, Almamya.</h2>
+        <address class="not-italic mt-5 text-grey-1">
+          {SITE.address.line2}<br />
+          {SITE.address.line1}<br />
+          {SITE.address.city}, {SITE.address.country}
+        </address>
+        <p class="mt-5 text-sm text-grey-1">
+          <a href={SITE.phoneHref} class="link-underline">{SITE.phone}</a><br />
+          <a href={SITE.emailHref} class="link-underline">{SITE.email}</a>
+        </p>
+
+        <h3 class="mt-10 eyebrow">Distances</h3>
+        <div class="mt-5"><Distances items={DISTANCES_FR} /></div>
+      </div>
+
+      <div class="lg:sticky lg:top-28">
+        <MapEmbed lang="fr" />
+        <p class="mt-3 text-xs text-grey-1">
+          Aucun rendez-vous d'affaires à Kaloum ne nécessite de voiture.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

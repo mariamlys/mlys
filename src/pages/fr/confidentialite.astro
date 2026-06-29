@@ -1,0 +1,52 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { SITE } from '../../config/site';
+---
+
+<Layout
+  lang="fr"
+  path="/confidentialite"
+  title="Politique de confidentialité"
+  description="Politique de confidentialité et protection des données de M'LYS APPART."
+>
+  <PageHero eyebrow="Informations" title="Politique de confidentialité" />
+
+  <section class="section">
+    <div class="container-x max-w-3xl text-grey-1 space-y-6 text-sm leading-relaxed">
+      <p>
+        M'LYS APPART attache une grande importance à la protection de vos données personnelles.
+        Cette page décrit les informations que nous collectons et l'usage que nous en faisons.
+      </p>
+      <div>
+        <h2 class="text-xl text-black">Données collectées</h2>
+        <p class="mt-2">
+          Lorsque vous remplissez notre formulaire de contact, nous collectons les informations
+          que vous nous transmettez (nom, e-mail, téléphone, organisation, dates et contexte de séjour)
+          dans le seul but de répondre à votre demande de devis ou de réservation.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl text-black">Conservation et partage</h2>
+        <p class="mt-2">
+          Vos données ne sont jamais revendues. Elles sont conservées le temps nécessaire au
+          traitement de votre demande et à la relation commerciale qui peut en découler.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl text-black">Mesure d'audience</h2>
+        <p class="mt-2">
+          Ce site utilise une solution de mesure d'audience respectueuse de la vie privée,
+          sans cookie publicitaire ni traçage individuel.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl text-black">Vos droits</h2>
+        <p class="mt-2">
+          Vous pouvez demander l'accès, la rectification ou la suppression de vos données en nous
+          écrivant à <a href={SITE.emailHref} class="link-underline">{SITE.email}</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

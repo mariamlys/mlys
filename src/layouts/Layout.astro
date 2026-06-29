@@ -1,0 +1,99 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE, ROOMS } from '../config/site';
+
+interface Props {
+  lang: 'fr' | 'en';
+  title: string;
+  description: string;
+  /** Chemin de la page courante côté FR, ex. "/studio" (sans le préfixe /fr) */
+  path?: string;
+  image?: string;
+}
+
+const { lang, title, description, path = '', image = '/images/facade.png' } = Astro.props;
+
+const fullTitle = `${title} · ${SITE.name}`;
+const canonical = `${SITE.domain}/${lang}${path}`;
+const frUrl = `${SITE.domain}/fr${path}`;
+const enUrl = `${SITE.domain}/en${path}`;
+const ogImage = `${SITE.domain}${image}`;
+
+// Schema.org LodgingBusiness — aide le SEO local "appart hotel conakry"
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LodgingBusiness',
+  name: SITE.name,
+  description,
+  url: SITE.domain,
+  telephone: SITE.phone,
+  email: SITE.email,
+  priceRange: '950000–1200000 GNF',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: `${SITE.address.line2}, ${SITE.address.line1}`,
+    addressLocality: 'Conakry',
+    addressCountry: 'GN',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: SITE.gps.lat,
+    longitude: SITE.gps.lng,
+  },
+  makesOffer: [
+    { '@type': 'Offer', name: 'Studio', price: ROOMS.studio.priceGNF, priceCurrency: 'GNF' },
+    { '@type': 'Offer', name: 'Suite 2 pièces', price: ROOMS.suite.priceGNF, priceCurrency: 'GNF' },
+  ],
+};
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- hreflang : indique à Google les versions FR/EN -->
+    <link rel="alternate" hreflang="fr" href={frUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={frUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <Header lang={lang} path={path} />
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

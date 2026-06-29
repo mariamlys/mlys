@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PillarCard from '../../components/PillarCard.astro';
+---
+
+<Layout
+  lang="fr"
+  path="/a-propos"
+  title="À propos"
+  description="M'LYS APPART, l'appart-hôtel boutique du quartier d'affaires de Conakry. Notre vision : un séjour long pensé comme à la maison, au cœur de Kaloum, à un prix juste."
+>
+  <PageHero
+    eyebrow="La maison"
+    title="L'appart-hôtel du <span class='accent-italic'>quartier d'affaires</span>."
+    subtitle="Une adresse boutique et intimiste, dédiée aux séjours qui durent."
+  />
+
+  <section class="section">
+    <div class="container-x max-w-3xl">
+      <p class="text-xl md:text-2xl font-display text-black leading-snug">
+        M'LYS APPART est né d'une conviction simple : à Kaloum, on devrait pouvoir
+        séjourner longtemps sans renoncer au confort d'un véritable chez-soi.
+      </p>
+      <p class="mt-6 text-grey-1">
+        Consultants en mission, diplomates en transition, cadres en rotation ou familles
+        en réinstallation : nos studios et nos suites sont pensés pour celles et ceux dont
+        le séjour se compte en semaines ou en mois, au cœur du seul quartier d'affaires de Conakry.
+      </p>
+      <p class="mt-4 text-grey-1">
+        Boutique et intimiste, M'LYS APPART fait le choix de la transparence des prix et de
+        la proximité immédiate avec tout ce qui compte à Kaloum — plutôt que celui du volume
+        et de l'effet de masse.
+      </p>
+    </div>
+
+    <div class="container-x mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <PillarCard number="01" title="L'emplacement le plus stratégique" text="Kaloum, l'unique quartier d'affaires de Conakry." />
+      <PillarCard number="02" title="Un prix juste et transparent" text="Tarifs affichés, dégressifs sur la durée." />
+      <PillarCard number="03" title="Le format appart, vraiment équipé" text="Studios et suites pensés pour les longs séjours." />
+      <PillarCard number="04" title="La Diversité Signature" text="Restaurant et petit-déjeuner inclus." />
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Quote from '../../components/Quote.astro';
+---
+
+<Layout
+  lang="fr"
+  path="/restaurant"
+  title="Restaurant La Diversité Signature"
+  description="La Diversité Signature : cuisine d'ici et d'ailleurs au cœur de Kaloum. Petit-déjeuner buffet inclus, service continu de midi à minuit, ouvert aux résidents et à la clientèle extérieure."
+  image="/images/resto.png"
+>
+  <PageHero
+    image="/images/resto.png"
+    eyebrow="Restaurant"
+    title="La Diversité <span class='accent-italic'>Signature</span>"
+    subtitle="Une cuisine d'ici et d'ailleurs, à la rencontre de l'Europe et de l'Afrique."
+  />
+
+  <section class="section">
+    <div class="container-x grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="eyebrow">Le concept</span>
+        <h2 class="mt-4 text-3xl">L'équilibre, dans l'assiette.</h2>
+        <p class="mt-5 text-grey-1">
+          La Diversité Signature compose un dialogue entre cuisine européenne et saveurs africaines.
+          Ouvert aux résidents comme à la clientèle extérieure, le restaurant sert en continu,
+          du petit-déjeuner buffet jusqu'au dîner.
+        </p>
+        <p class="mt-4 text-grey-1">
+          Le petit-déjeuner buffet est inclus pour tous les résidents de M'LYS APPART.
+        </p>
+      </div>
+
+      <div class="bg-ivory-dark p-8 md:p-10">
+        <h3 class="eyebrow">Horaires</h3>
+        <dl class="mt-6 space-y-5 text-sm">
+          <div>
+            <dt class="text-black-soft font-medium">Petit-déjeuner buffet</dt>
+            <dd class="text-grey-1 mt-1">Lundi au vendredi · 7h00 — 10h00</dd>
+            <dd class="text-grey-1">Samedi et dimanche · 7h00 — 11h00</dd>
+          </div>
+          <div class="border-t border-grey-3 pt-5">
+            <dt class="text-black-soft font-medium">Déjeuner & dîner</dt>
+            <dd class="text-grey-1 mt-1">Tous les jours · 12h00 — Minuit</dd>
+            <dd class="text-grey-1">Service continu</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-black text-ivory">
+    <div class="container-x">
+      <Quote text="Une table où l'ici et l'ailleurs se rencontrent, à toute heure." />
+      <p class="mt-10 text-center text-grey-2">
+        Le restaurant peut être privatisé pour vos événements.
+        <a href="/fr/evenements" class="text-gold link-underline ml-1">En savoir plus</a>
+      </p>
+    </div>
+  </section>
+</Layout>

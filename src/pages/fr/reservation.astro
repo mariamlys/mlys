@@ -1,0 +1,105 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PillarCard from '../../components/PillarCard.astro';
+
+/* ------------------------------------------------------------------ */
+/* PAIEMENT ORANGE MONEY (acompte) — code marchand public.             */
+/* NE JAMAIS mettre ici le "code secret marchand" (il reste privé).    */
+/* ------------------------------------------------------------------ */
+const OM = {
+  merchantName: "SOCIÉTÉ DES HÔTELS M'LYS SARL",
+  merchantCode: '443522',
+  // Le client compose ce code et valide avec SON propre code secret (PIN).
+  ussd: '#144*6*443522*[montant]*[votre code secret]#',
+};
+
+// TODO direction : fixer la politique d'acompte (ex. 1 nuit, ou 30 %) et d'annulation.
+---
+
+<Layout
+  lang="fr"
+  path="/reservation"
+  title="Réservation"
+  description="Réservez votre studio ou votre suite à M'LYS APPART, au cœur de Kaloum. Acompte par Orange Money pour confirmer votre séjour."
+>
+  <PageHero
+    eyebrow="Réservation"
+    title="Réservez votre séjour."
+    subtitle="Bloquez votre studio ou votre suite avec un acompte par Orange Money."
+  />
+
+  <!-- 3 étapes -->
+  <section class="section">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Comment ça marche</span>
+        <h2 class="mt-4 text-3xl md:text-4xl">Réserver en trois étapes.</h2>
+      </div>
+      <div class="mt-12 grid sm:grid-cols-3 gap-8">
+        <PillarCard
+          number="01"
+          title="Votre demande"
+          text="Indiquez vos dates et le type de logement souhaité via notre formulaire de contact."
+        />
+        <PillarCard
+          number="02"
+          title="Notre confirmation"
+          text="Nous vérifions la disponibilité et vous communiquons le montant de l'acompte à régler."
+        />
+        <PillarCard
+          number="03"
+          title="L'acompte"
+          text="Vous réglez l'acompte par Orange Money. Nous l'identifions et confirmons votre réservation — sans aucune démarche de votre part."
+        />
+      </div>
+
+      <div class="mt-10">
+        <a href="/fr/contact" class="btn btn-dark">Faire ma demande de réservation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bloc paiement Orange Money (centré, sans QR) -->
+  <section class="section bg-black text-ivory">
+    <div class="container-x max-w-2xl mx-auto text-center">
+      <span class="eyebrow !text-gold">Acompte</span>
+      <h2 class="mt-4 text-3xl md:text-4xl">Régler par Orange Money.</h2>
+      <p class="mt-5 text-grey-2">
+        Une fois votre demande confirmée, réglez l'acompte au compte marchand
+        <span class="text-ivory">{OM.merchantName}</span> depuis votre Orange Money.
+        Nous identifions votre paiement grâce à votre numéro et confirmons votre
+        réservation : rien d'autre à faire de votre côté.
+      </p>
+
+      <div class="mt-10 border border-white/15 p-8 text-left max-w-md mx-auto">
+        <p class="text-sm text-grey-2 text-center">Code marchand</p>
+        <p class="font-display text-5xl text-gold tracking-wide text-center">{OM.merchantCode}</p>
+
+        <div class="mt-7 border-t border-white/10 pt-6 text-sm text-grey-2 space-y-1.5">
+          <p class="text-ivory">Pour payer depuis votre téléphone :</p>
+          <p>Composez <span class="text-gold">{OM.ussd}</span></p>
+          <p class="text-xs text-grey-1">
+            « votre code secret » = votre code PIN Orange Money personnel.
+          </p>
+        </div>
+      </div>
+
+      <p class="mt-8 text-sm text-grey-2">
+        Paiement par carte bancaire et réservation automatisée : bientôt disponibles.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container-x text-center max-w-2xl mx-auto">
+      <h2 class="text-2xl">Une question avant de réserver ?</h2>
+      <p class="mt-4 text-grey-1">Notre équipe vous répond et vous accompagne pour votre séjour.</p>
+      <div class="mt-7 flex flex-wrap gap-4 justify-center">
+        <a href="/fr/contact" class="btn btn-gold">Nous contacter</a>
+        <a href="tel:+224624299369" class="btn btn-outline">Appeler la réception</a>
+      </div>
+    </div>
+  </section>
+</Layout>

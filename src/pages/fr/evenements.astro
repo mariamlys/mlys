@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<Layout
+  lang="fr"
+  path="/evenements"
+  title="Événements & réunions"
+  description="M'LYS APPART accueille vos réunions et événements professionnels au cœur de Kaloum. Possibilité de privatisation du restaurant La Diversité Signature."
+>
+  <PageHero
+    eyebrow="Professionnels"
+    title="Réunions & <span class='accent-italic'>événements</span>"
+    subtitle="Un cadre intimiste au cœur du quartier d'affaires, pour vos rendez-vous professionnels."
+  />
+
+  <section class="section">
+    <div class="container-x max-w-3xl">
+      <span class="eyebrow">Sur place</span>
+      <h2 class="mt-4 text-3xl">Recevoir à Kaloum, simplement.</h2>
+      <p class="mt-5 text-grey-1">
+        {/* TODO: confirmer avec la direction le statut exact de la salle de réunion
+            (existence, capacité, équipements) puis détailler ici. */}
+        M'LYS APPART met à disposition un espace adapté à vos réunions de travail et rencontres
+        professionnelles, à deux pas des ministères, banques et ambassades. Le restaurant
+        La Diversité Signature peut également être privatisé pour vos événements.
+      </p>
+
+      <div class="mt-10 grid sm:grid-cols-2 gap-6">
+        <div class="border-t border-grey-3 pt-5">
+          <h3 class="text-xl">Réunions professionnelles</h3>
+          <p class="mt-3 text-sm text-grey-1">
+            Un emplacement central qui évite à vos invités tout déplacement en voiture dans Kaloum.
+          </p>
+        </div>
+        <div class="border-t border-grey-3 pt-5">
+          <h3 class="text-xl">Privatisation du restaurant</h3>
+          <p class="mt-3 text-sm text-grey-1">
+            La Diversité Signature se privatise pour vos déjeuners, dîners et réceptions.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <a href="/fr/contact" class="btn btn-dark">Organiser un événement</a>
+      </div>
+    </div>
+  </section>
+</Layout>

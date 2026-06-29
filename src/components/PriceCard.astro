@@ -1,0 +1,31 @@
+---
+import { fmtGNF, toEUR, toUSD } from '../config/site';
+
+interface Props {
+  priceGNF: number;
+  label: string;        // ex. "par nuit"
+  note?: string;        // ex. "Petit-déjeuner buffet inclus"
+  ctaLabel: string;
+  ctaHref: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+const { priceGNF, label, note, ctaLabel, ctaHref, secondaryLabel, secondaryHref } = Astro.props;
+---
+
+<div class="bg-black text-ivory p-8 lg:sticky lg:top-28">
+  <div class="flex items-baseline gap-2">
+    <span class="font-display text-4xl text-ivory">{fmtGNF(priceGNF)}</span>
+  </div>
+  <p class="mt-1 text-sm text-grey-2">{label}</p>
+
+  <!-- Équivalents indicatifs (taux à confirmer, cf. config) -->
+  <p class="mt-3 text-sm text-gold">≈ {toEUR(priceGNF)} € &nbsp;·&nbsp; ≈ {toUSD(priceGNF)} $</p>
+
+  {note && <p class="mt-5 text-sm text-grey-2 border-t border-white/10 pt-5">{note}</p>}
+
+  <a href={ctaHref} class="btn btn-gold w-full mt-6">{ctaLabel}</a>
+  {secondaryLabel && secondaryHref && (
+    <a href={secondaryHref} class="btn btn-outline-light w-full mt-3">{secondaryLabel}</a>
+  )}
+</div>

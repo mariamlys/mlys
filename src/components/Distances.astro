@@ -1,0 +1,16 @@
+---
+interface Props {
+  items: { place: string; time: string }[];
+}
+const { items } = Astro.props;
+---
+
+<ul class="divide-y divide-grey-3">
+  {items.map((d) => (
+    <li class="flex items-baseline gap-2 py-3 text-sm">
+      <span class="text-black-soft whitespace-nowrap">{d.place}</span>
+      <span class="flex-1 border-b border-dotted border-grey-2 translate-y-[-3px]"></span>
+      <span class="text-gold-dark whitespace-nowrap">{d.time}</span>
+    </li>
+  ))}
+</ul>
