@@ -3,7 +3,8 @@ interface Props { lang: 'fr' | 'en'; }
 const { lang } = Astro.props;
 
 // TODO: créer un compte Formspree et renseigner PUBLIC_FORM_ENDPOINT dans .env
-const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT || 'https://formspree.io/f/YOUR_FORM_ID';
+// URL Formspree publique (pas un secret) : intégrée directement, aucune variable Netlify requise.
+const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT || 'https://formspree.io/f/mkolvklq';
 
 const t = {
   fr: {
