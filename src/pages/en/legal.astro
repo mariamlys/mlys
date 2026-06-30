@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { SITE } from '../../config/site';
+---
+
+<Layout
+  lang="en"
+  path="/legal"
+  title="Legal notice"
+  description="Legal notice for M'LYS APPART, Conakry."
+>
+  <PageHero eyebrow="Information" title="Legal notice" />
+
+  <section class="section">
+    <div class="container-x max-w-3xl text-grey-1 space-y-6 text-sm leading-relaxed">
+      <div>
+        <h2 class="text-xl text-black">Site publisher</h2>
+        <p class="mt-2">
+          M'LYS APPART<br />
+          {SITE.address.line2}, {SITE.address.line1}<br />
+          {SITE.address.city}, Republic of Guinea<br />
+          Phone: {SITE.phone}<br />
+          Email: {SITE.email}
+        </p>
+        <p class="mt-2 text-grey-2"><em>Company name, trade register (RCCM), tax ID (NIF) and publication director: to be completed.</em></p>
+      </div>
+      <div>
+        <h2 class="text-xl text-black">Hosting</h2>
+        <p class="mt-2">Site hosted by Netlify, Inc.</p>
+      </div>
+      <div>
+        <h2 class="text-xl text-black">Intellectual property</h2>
+        <p class="mt-2">
+          All content on this site (text, photographs, trademarks) is the property of M'LYS APPART
+          unless otherwise stated. Any reproduction without authorisation is prohibited.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

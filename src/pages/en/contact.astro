@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { SITE } from '../../config/site';
+---
+
+<Layout
+  lang="en"
+  path="/contact"
+  title="Quote & contact"
+  description="Request a tailored quote for your stay at M'LYS APPART. Negotiable terms for companies, embassies and NGOs. Fast reply."
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Request your <span class='accent-italic'>quote</span>."
+    subtitle="Individual stay, long assignment or corporate account: tell us what you need and we will get back to you quickly."
+  />
+
+  <section class="section">
+    <div class="container-x grid lg:grid-cols-[1fr_320px] gap-12">
+      <div>
+        <ContactForm lang="en" />
+      </div>
+      <aside class="bg-ivory-dark p-8 h-fit">
+        <h3 class="eyebrow">Reach us</h3>
+        <address class="not-italic mt-5 text-sm text-grey-1 space-y-3">
+          <p>{SITE.address.line2}<br />{SITE.address.line1}<br />{SITE.address.city}, Republic of Guinea</p>
+          <p><a href={SITE.phoneHref} class="link-underline">{SITE.phone}</a></p>
+          <p><a href={SITE.emailHref} class="link-underline">{SITE.email}</a></p>
+        </address>
+        <p class="mt-6 text-sm text-grey-1 border-t border-grey-3 pt-5">
+          Corporate, embassy and NGO accounts: sliding-scale rates and negotiable terms
+          for long stays.
+        </p>
+      </aside>
+    </div>
+  </section>
+</Layout>

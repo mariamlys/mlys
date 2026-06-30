@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PillarCard from '../../components/PillarCard.astro';
+---
+
+<Layout
+  lang="en"
+  path="/about"
+  title="About"
+  description="M'LYS APPART, the boutique serviced apartments of Conakry's business district. Our vision: a long stay that feels like home, in the heart of Kaloum, at a fair price."
+>
+  <PageHero
+    eyebrow="The house"
+    title="The serviced apartments of the <span class='accent-italic'>business district</span>."
+    subtitle="A boutique, intimate address dedicated to stays that last."
+  />
+
+  <section class="section">
+    <div class="container-x max-w-3xl">
+      <p class="text-xl md:text-2xl font-display text-black leading-snug">
+        M'LYS APPART was born from a simple conviction: in Kaloum, you should be able to
+        stay for a long time without giving up the comfort of a real home.
+      </p>
+      <p class="mt-6 text-grey-1">
+        Consultants on assignment, diplomats in transition, executives on rotation or families
+        relocating: our studios and suites are designed for those whose stay is counted in weeks
+        or months, in the heart of Conakry's one business district.
+      </p>
+      <p class="mt-4 text-grey-1">
+        Boutique and intimate, M'LYS APPART chooses transparent pricing and immediate proximity
+        to everything that matters in Kaloum — rather than volume and scale.
+      </p>
+    </div>
+
+    <div class="container-x mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <PillarCard number="01" title="The most strategic location" text="Kaloum, the one business district of Conakry." />
+      <PillarCard number="02" title="A fair, transparent price" text="Published rates, decreasing with length of stay." />
+      <PillarCard number="03" title="The apartment format, fully equipped" text="Studios and suites designed for long stays." />
+      <PillarCard number="04" title="La Diversité Signature" text="Restaurant and breakfast included." />
+    </div>
+  </section>
+</Layout>

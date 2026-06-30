@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PillarCard from '../../components/PillarCard.astro';
+
+/* Orange Money deposit — public merchant code. Never put the secret merchant code here. */
+const OM = {
+  merchantName: "SOCIÉTÉ DES HÔTELS M'LYS SARL",
+  merchantCode: '443522',
+  ussd: '#144*6*443522*[amount]*[your PIN]#',
+};
+---
+
+<Layout
+  lang="en"
+  path="/booking"
+  title="Booking"
+  description="Book your studio or suite at M'LYS APPART, in the heart of Kaloum. Pay a deposit by Orange Money to confirm your stay."
+>
+  <PageHero
+    eyebrow="Booking"
+    title="Book your stay."
+    subtitle="Secure your studio or suite with an Orange Money deposit."
+  />
+
+  <!-- 3 steps -->
+  <section class="section">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <span class="eyebrow">How it works</span>
+        <h2 class="mt-4 text-3xl md:text-4xl">Book in three steps.</h2>
+      </div>
+      <div class="mt-12 grid sm:grid-cols-3 gap-8">
+        <PillarCard
+          number="01"
+          title="Your request"
+          text="Tell us your dates and the type of accommodation you would like, via our contact form."
+        />
+        <PillarCard
+          number="02"
+          title="Our confirmation"
+          text="We check availability and let you know the deposit amount to pay."
+        />
+        <PillarCard
+          number="03"
+          title="The deposit"
+          text="You pay the deposit by Orange Money. We identify it and confirm your booking — with nothing further required from you."
+        />
+      </div>
+
+      <div class="mt-10">
+        <a href="/en/contact" class="btn btn-dark">Make my booking request</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Orange Money block -->
+  <section class="section bg-black text-ivory">
+    <div class="container-x max-w-2xl mx-auto text-center">
+      <span class="eyebrow !text-gold">Deposit</span>
+      <h2 class="mt-4 text-3xl md:text-4xl">Pay by Orange Money.</h2>
+      <p class="mt-5 text-grey-2">
+        Once your request is confirmed, pay the deposit to the merchant account
+        <span class="text-ivory">{OM.merchantName}</span> from your Orange Money.
+        We identify your payment by your phone number and confirm your booking:
+        nothing further is required on your side.
+      </p>
+
+      <div class="mt-10 border border-white/15 p-8 text-left max-w-md mx-auto">
+        <p class="text-sm text-grey-2 text-center">Merchant code</p>
+        <p class="font-display text-5xl text-gold tracking-wide text-center">{OM.merchantCode}</p>
+
+        <div class="mt-7 border-t border-white/10 pt-6 text-sm text-grey-2 space-y-1.5">
+          <p class="text-ivory">To pay from your phone:</p>
+          <p>Dial <span class="text-gold">{OM.ussd}</span></p>
+          <p class="text-xs text-grey-1">
+            "your PIN" = your personal Orange Money secret code.
+          </p>
+        </div>
+      </div>
+
+      <p class="mt-8 text-sm text-grey-2">
+        Card payment and automated booking: coming soon.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container-x text-center max-w-2xl mx-auto">
+      <h2 class="text-2xl">A question before booking?</h2>
+      <p class="mt-4 text-grey-1">Our team will answer and help you plan your stay.</p>
+      <div class="mt-7 flex flex-wrap gap-4 justify-center">
+        <a href="/en/contact" class="btn btn-gold">Contact us</a>
+        <a href="tel:+224624299369" class="btn btn-outline">Call reception</a>
+      </div>
+    </div>
+  </section>
+</Layout>

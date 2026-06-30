@@ -1,0 +1,52 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { SITE } from '../../config/site';
+---
+
+<Layout
+  lang="en"
+  path="/privacy"
+  title="Privacy policy"
+  description="Privacy policy and data protection for M'LYS APPART."
+>
+  <PageHero eyebrow="Information" title="Privacy policy" />
+
+  <section class="section">
+    <div class="container-x max-w-3xl text-grey-1 space-y-6 text-sm leading-relaxed">
+      <p>
+        M'LYS APPART takes the protection of your personal data seriously. This page describes the
+        information we collect and how we use it.
+      </p>
+      <div>
+        <h2 class="text-xl text-black">Data collected</h2>
+        <p class="mt-2">
+          When you fill in our contact form, we collect the information you provide (name, email,
+          phone, organisation, dates and context of stay) for the sole purpose of responding to your
+          quote or booking request.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl text-black">Retention and sharing</h2>
+        <p class="mt-2">
+          Your data is never sold. It is kept for as long as needed to process your request and any
+          business relationship that may follow.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl text-black">Analytics</h2>
+        <p class="mt-2">
+          This site uses a privacy-friendly analytics solution, with no advertising cookies or
+          individual tracking.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl text-black">Your rights</h2>
+        <p class="mt-2">
+          You can request access to, correction of, or deletion of your data by writing to us at
+          <a href={SITE.emailHref} class="link-underline">{SITE.email}</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

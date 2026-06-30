@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Quote from '../../components/Quote.astro';
+---
+
+<Layout
+  lang="en"
+  path="/restaurant"
+  title="La Diversité Signature restaurant"
+  description="La Diversité Signature: cuisine from here and elsewhere in the heart of Kaloum. Buffet breakfast included, continuous service from noon to midnight, open to guests and outside diners."
+  image="/images/resto.png"
+>
+  <PageHero
+    image="/images/resto.png"
+    eyebrow="Restaurant"
+    title="La Diversité <span class='accent-italic'>Signature</span>"
+    subtitle="Cuisine from here and elsewhere, where Europe and Africa meet."
+  />
+
+  <section class="section">
+    <div class="container-x grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="eyebrow">The concept</span>
+        <h2 class="mt-4 text-3xl">Balance, on the plate.</h2>
+        <p class="mt-5 text-grey-1">
+          La Diversité Signature creates a dialogue between European cuisine and African flavours.
+          Open to residents and outside diners alike, the restaurant serves continuously, from the
+          buffet breakfast through to dinner.
+        </p>
+        <p class="mt-4 text-grey-1">
+          Buffet breakfast is included for all M'LYS APPART residents.
+        </p>
+      </div>
+
+      <div class="bg-ivory-dark p-8 md:p-10">
+        <h3 class="eyebrow">Opening hours</h3>
+        <dl class="mt-6 space-y-5 text-sm">
+          <div>
+            <dt class="text-black-soft font-medium">Buffet breakfast</dt>
+            <dd class="text-grey-1 mt-1">Monday to Friday · 7:00 AM — 10:00 AM</dd>
+            <dd class="text-grey-1">Saturday and Sunday · 7:00 AM — 11:00 AM</dd>
+          </div>
+          <div class="border-t border-grey-3 pt-5">
+            <dt class="text-black-soft font-medium">Lunch & dinner</dt>
+            <dd class="text-grey-1 mt-1">Every day · 12:00 PM — Midnight</dd>
+            <dd class="text-grey-1">Continuous service</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-black text-ivory">
+    <div class="container-x">
+      <Quote text="A table where here and elsewhere meet, at any hour." />
+      <p class="mt-10 text-center text-grey-2">
+        The restaurant can be hired privately for your events.
+        <a href="/en/contact" class="text-gold link-underline ml-1">Contact us</a>
+      </p>
+    </div>
+  </section>
+</Layout>

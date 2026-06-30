@@ -1,0 +1,69 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import Gallery from '../../components/Gallery.astro';
+import { ROOMS } from '../../config/site';
+
+const amenities = [
+  'Work desk', 'Sitting area', 'Equipped kitchenette (hob, microwave, fridge)',
+  'Double bed, hotel-quality linen', 'HD smart TV, international channels', 'Air conditioning',
+  'High-speed Wi-Fi', 'Bathroom with shower', 'Safe', 'Telephone', 'Mini-bar',
+];
+---
+
+<Layout
+  lang="en"
+  path="/studio"
+  title="Studio"
+  description="M'LYS APPART studio in Kaloum: equipped kitchenette, desk and sitting area. 950,000 GNF per night, breakfast included. Ideal for assignments lasting several weeks."
+  image={ROOMS.studio.image}
+>
+  <PageHero
+    image={ROOMS.studio.image}
+    eyebrow="1 guest"
+    title="Studio"
+    subtitle="The essentials of a home, for individual assignments lasting from several weeks to several months."
+  />
+
+  <section class="section">
+    <div class="container-x grid lg:grid-cols-[1fr_360px] gap-12">
+      <div>
+        <span class="eyebrow">The space</span>
+        <h2 class="mt-4 text-3xl">A studio designed to work and rest.</h2>
+        <p class="mt-5 text-grey-1 max-w-2xl">
+          A sitting area, a dedicated desk and a complete kitchenette: all the room you need to live
+          and work comfortably during a long assignment in Kaloum. Hotel-quality bedding,
+          air conditioning and high-speed Wi-Fi for comfort without compromise.
+        </p>
+
+        <h3 class="mt-10 text-xl">Amenities</h3>
+        <ul class="mt-5 grid sm:grid-cols-2 gap-x-8 gap-y-2.5">
+          {amenities.map((e) => (
+            <li class="flex items-start gap-2.5 text-sm text-black-soft">
+              <span class="text-gold mt-1.5 w-1 h-1 rounded-full bg-gold flex-shrink-0"></span>{e}
+            </li>
+          ))}
+        </ul>
+
+        <div class="mt-12">
+          <Gallery images={[
+            { src: ROOMS.studio.image, alt: 'M\'LYS APPART studio' },
+            { src: '/images/studio-large.jpg', alt: 'Studio with bed and sitting area' },
+            { src: '/images/studio-bureau.jpg', alt: 'Studio desk' },
+          ]} />
+        </div>
+      </div>
+
+      <PriceCard
+        priceGNF={ROOMS.studio.priceGNF}
+        label="per night"
+        note="Buffet breakfast included. Sliding-scale rates on request for long stays and corporate accounts."
+        ctaLabel="Book"
+        ctaHref="/en/booking"
+        secondaryLabel="Request a quote"
+        secondaryHref="/en/contact"
+      />
+    </div>
+  </section>
+</Layout>

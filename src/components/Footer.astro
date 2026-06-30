@@ -9,18 +9,18 @@ const t = {
   fr: {
     tagline: "L'appart-hôtel du quartier d'affaires de Conakry.",
     stay: 'Hébergement', studio: 'Studio', suite: 'Suite 2 pièces', book: 'Réserver',
-    house: 'Établissement', resto: 'Restaurant', events: 'Événements', location: 'Localisation', about: 'À propos',
+    house: 'Établissement', resto: 'Restaurant', location: 'Localisation', about: 'À propos',
     contact: 'Contact', legal: 'Mentions légales', privacy: 'Confidentialité',
     rights: 'Tous droits réservés.',
-    slugs: { studio: '/studio', suite: '/suite', book: '/reservation', resto: '/restaurant', events: '/evenements', location: '/localisation', about: '/a-propos', contact: '/contact', legal: '/mentions-legales', privacy: '/confidentialite' },
+    slugs: { studio: '/studio', suite: '/suite', book: '/reservation', resto: '/restaurant', location: '/localisation', about: '/a-propos', contact: '/contact', legal: '/mentions-legales', privacy: '/confidentialite' },
   },
   en: {
     tagline: 'The serviced apartments of Conakry’s business district.',
     stay: 'Stay', studio: 'Studio', suite: 'Two-room suite', book: 'Book',
-    house: 'The house', resto: 'Restaurant', events: 'Events', location: 'Location', about: 'About',
+    house: 'The house', resto: 'Restaurant', location: 'Location', about: 'About',
     contact: 'Contact', legal: 'Legal notice', privacy: 'Privacy',
     rights: 'All rights reserved.',
-    slugs: { studio: '/studio', suite: '/suite', book: '/booking', resto: '/restaurant', events: '/events', location: '/location', about: '/about', contact: '/contact', legal: '/legal', privacy: '/privacy' },
+    slugs: { studio: '/studio', suite: '/suite', book: '/booking', resto: '/restaurant', location: '/location', about: '/about', contact: '/contact', legal: '/legal', privacy: '/privacy' },
   },
 }[lang];
 const s = t.slugs;
@@ -49,7 +49,6 @@ const s = t.slugs;
       <h4 class="eyebrow !text-gold mb-5">{t.house}</h4>
       <ul class="space-y-2.5 text-sm text-grey-2">
         <li><a href={`${base}${s.resto}`} class="hover:text-gold transition-colors">{t.resto}</a></li>
-        <li><a href={`${base}${s.events}`} class="hover:text-gold transition-colors">{t.events}</a></li>
         <li><a href={`${base}${s.location}`} class="hover:text-gold transition-colors">{t.location}</a></li>
         <li><a href={`${base}${s.about}`} class="hover:text-gold transition-colors">{t.about}</a></li>
       </ul>

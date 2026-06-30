@@ -2,13 +2,13 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE, ROOMS } from '../config/site';
+import { SITE, ROOMS, altPaths } from '../config/site';
 
 interface Props {
   lang: 'fr' | 'en';
   title: string;
   description: string;
-  /** Chemin de la page courante côté FR, ex. "/studio" (sans le préfixe /fr) */
+  /** Chemin de la page dans sa propre langue, ex. "/studio" ou "/about" */
   path?: string;
   image?: string;
 }
@@ -16,9 +16,10 @@ interface Props {
 const { lang, title, description, path = '', image = '/images/facade.png' } = Astro.props;
 
 const fullTitle = `${title} · ${SITE.name}`;
+const alt = altPaths(lang, path);
 const canonical = `${SITE.domain}/${lang}${path}`;
-const frUrl = `${SITE.domain}/fr${path}`;
-const enUrl = `${SITE.domain}/en${path}`;
+const frUrl = `${SITE.domain}/fr${alt.fr}`;
+const enUrl = `${SITE.domain}/en${alt.en}`;
 const ogImage = `${SITE.domain}${image}`;
 
 // Schema.org LodgingBusiness — aide le SEO local "appart hotel conakry"

@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PriceCard from '../../components/PriceCard.astro';
+import { ROOMS } from '../../config/site';
+
+const amenities = [
+  'Separate 25 m² living room with sofa bed', 'Open kitchen (hob, oven, microwave, fridge)',
+  'Desk and dining table', 'Separate bedroom with double bed', 'Full bathroom',
+  'Independent air conditioning per room', 'HD smart TV', 'High-speed Wi-Fi', 'Safe', 'Telephone', 'Mini-bar',
+];
+---
+
+<Layout
+  lang="en"
+  path="/suite"
+  title="Two-room suite"
+  description="M'LYS APPART two-room suite in Kaloum: separate living room, open kitchen, independent bedroom. 1,200,000 GNF per night, breakfast included. Up to 3 guests."
+  image={ROOMS.suite.image}
+>
+  <PageHero
+    image={ROOMS.suite.image}
+    eyebrow="Up to 3 guests"
+    title="Two-room suite"
+    subtitle="A true apartment, for families relocating, accompanied executives and diplomats in transition."
+  />
+
+  <section class="section">
+    <div class="container-x grid lg:grid-cols-[1fr_360px] gap-12">
+      <div>
+        <span class="eyebrow">The space</span>
+        <h2 class="mt-4 text-3xl">The comfort of an apartment, the service of a hotel.</h2>
+        <p class="mt-5 text-grey-1 max-w-2xl">
+          A separate 25 m² living room, a fully equipped open kitchen and an independent bedroom:
+          room to entertain, cook and gather as a family, with air conditioning you can set
+          room by room and all the service of a serviced apartment.
+        </p>
+
+        <h3 class="mt-10 text-xl">Amenities</h3>
+        <ul class="mt-5 grid sm:grid-cols-2 gap-x-8 gap-y-2.5">
+          {amenities.map((e) => (
+            <li class="flex items-start gap-2.5 text-sm text-black-soft">
+              <span class="text-gold mt-1.5 w-1 h-1 rounded-full bg-gold flex-shrink-0"></span>{e}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <PriceCard
+        priceGNF={ROOMS.suite.priceGNF}
+        label="per night"
+        note="Buffet breakfast included. Sliding-scale rates on request for long stays and corporate accounts."
+        ctaLabel="Book"
+        ctaHref="/en/booking"
+        secondaryLabel="Request a quote"
+        secondaryHref="/en/contact"
+      />
+    </div>
+  </section>
+</Layout>

@@ -1,5 +1,5 @@
 ---
-import { SITE } from '../config/site';
+import { SITE, altPaths } from '../config/site';
 
 interface Props {
   lang: 'fr' | 'en';
@@ -12,7 +12,6 @@ const NAV = [
   { fr: 'Studio',        en: 'Studio',     frSlug: '/studio',         enSlug: '/studio' },
   { fr: 'Suite',         en: 'Suite',      frSlug: '/suite',          enSlug: '/suite' },
   { fr: 'Restaurant',    en: 'Restaurant', frSlug: '/restaurant',     enSlug: '/restaurant' },
-  { fr: 'Événements',    en: 'Events',     frSlug: '/evenements',     enSlug: '/events' },
   { fr: 'Localisation',  en: 'Location',   frSlug: '/localisation',   enSlug: '/location' },
   { fr: 'À propos',      en: 'About',      frSlug: '/a-propos',       enSlug: '/about' },
   { fr: 'Contact',       en: 'Contact',    frSlug: '/contact',        enSlug: '/contact' },
@@ -26,10 +25,10 @@ const t = {
 const base = `/${lang}`;
 const bookHref = lang === 'fr' ? '/fr/reservation' : '/en/booking';
 
-// Lien vers la même page dans l'autre langue (sinon accueil de l'autre langue)
-const other = lang === 'fr' ? 'en' : 'fr';
-const match = NAV.find((n) => (lang === 'fr' ? n.frSlug : n.enSlug) === path);
-const otherPath = match ? `/${other}${other === 'fr' ? match.frSlug : match.enSlug}` : `/${other}`;
+// Liens du sélecteur de langue vers la page équivalente dans chaque langue
+const alt = altPaths(lang, path);
+const frLink = `/fr${alt.fr}`;
+const enLink = `/en${alt.en}`;
 ---
 
 <header class="sticky top-0 z-50 bg-ivory/90 backdrop-blur-sm border-b border-grey-3">
@@ -55,9 +54,9 @@ const otherPath = match ? `/${other}${other === 'fr' ? match.frSlug : match.enSl
     <div class="flex items-center gap-5">
       <!-- Sélecteur de langue -->
       <div class="text-xs tracking-widest uppercase text-grey-1">
-        <a href={lang === 'fr' ? `/fr${path}` : otherPath} class={lang === 'fr' ? 'text-black font-medium' : 'hover:text-gold-dark'}>FR</a>
+        <a href={frLink} class={lang === 'fr' ? 'text-black font-medium' : 'hover:text-gold-dark'}>FR</a>
         <span class="text-grey-3 mx-1">/</span>
-        <a href={lang === 'en' ? `/en${path}` : otherPath} class={lang === 'en' ? 'text-black font-medium' : 'hover:text-gold-dark'}>EN</a>
+        <a href={enLink} class={lang === 'en' ? 'text-black font-medium' : 'hover:text-gold-dark'}>EN</a>
       </div>
 
       <a href={bookHref} class="btn btn-gold hidden sm:inline-flex !px-5 !py-2.5">{t.book}</a>

@@ -1,0 +1,48 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Distances from '../../components/Distances.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import { SITE, DISTANCES_EN } from '../../config/site';
+---
+
+<Layout
+  lang="en"
+  path="/location"
+  title="Location & access"
+  description="M'LYS APPART sits in the heart of Almamya, Kaloum: a short walk from the embassies, ministries, banks and the Central Bank of Conakry. Address, map and distances."
+>
+  <PageHero
+    eyebrow="Kaloum · Almamya"
+    title="In the heart of the business district."
+    subtitle="All of Kaloum a few steps away: embassies, ministries, banks and institutions."
+  />
+
+  <section class="section">
+    <div class="container-x grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <span class="eyebrow">Address</span>
+        <h2 class="mt-4 text-3xl">M'LYS APPART, Almamya.</h2>
+        <address class="not-italic mt-5 text-grey-1">
+          {SITE.address.line2}<br />
+          {SITE.address.line1}<br />
+          {SITE.address.city}, Republic of Guinea
+        </address>
+        <p class="mt-5 text-sm text-grey-1">
+          <a href={SITE.phoneHref} class="link-underline">{SITE.phone}</a><br />
+          <a href={SITE.emailHref} class="link-underline">{SITE.email}</a>
+        </p>
+
+        <h3 class="mt-10 eyebrow">Distances</h3>
+        <div class="mt-5"><Distances items={DISTANCES_EN} /></div>
+      </div>
+
+      <div class="lg:sticky lg:top-28">
+        <MapEmbed lang="en" />
+        <p class="mt-3 text-xs text-grey-1">
+          No business meeting in Kaloum requires a car.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

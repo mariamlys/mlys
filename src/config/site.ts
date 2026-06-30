@@ -105,3 +105,26 @@ export const DISTANCES_EN = [
 export const RESTAURANT = {
   name: 'La Diversité Signature',
 };
+
+/* ------------------------------------------------------------------ */
+/* CORRESPONDANCE DES URL FR ↔ EN (événements retiré)                  */
+/* Sert au sélecteur de langue et aux balises hreflang (SEO).          */
+/* ------------------------------------------------------------------ */
+export const SLUGS = [
+  { fr: '',                  en: '' },          // accueil
+  { fr: '/studio',           en: '/studio' },
+  { fr: '/suite',            en: '/suite' },
+  { fr: '/restaurant',       en: '/restaurant' },
+  { fr: '/localisation',     en: '/location' },
+  { fr: '/a-propos',         en: '/about' },
+  { fr: '/contact',          en: '/contact' },
+  { fr: '/reservation',      en: '/booking' },
+  { fr: '/mentions-legales', en: '/legal' },
+  { fr: '/confidentialite',  en: '/privacy' },
+];
+
+/** À partir de la langue courante et du chemin, renvoie les chemins FR et EN équivalents. */
+export function altPaths(lang: 'fr' | 'en', path: string): { fr: string; en: string } {
+  const row = SLUGS.find((s) => (lang === 'fr' ? s.fr : s.en) === path);
+  return row ? { fr: row.fr, en: row.en } : { fr: path, en: path };
+}
