@@ -5,6 +5,14 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Redirection racine : "/" envoie directement vers le français (langue par défaut).
+# force = true → la redirection se fait côté serveur, sans page blanche intermédiaire.
+[[redirects]]
+  from = "/"
+  to = "/fr/"
+  status = 302
+  force = true
+
 # En-têtes de sécurité de base appliqués à toutes les pages
 [[headers]]
   for = "/*"

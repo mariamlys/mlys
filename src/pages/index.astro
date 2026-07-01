@@ -1,25 +1,17 @@
 ---
-// Page racine. Redirige selon la langue du navigateur (FR par défaut).
+// Racine du site : redirige toujours vers le français (langue par défaut).
+// L'anglais est accessible via le bouton FR/EN. Page volontairement vide
+// (aucun texte affiché) pour éviter tout flash "Redirecting".
 ---
 
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>M'LYS APPART · Conakry</title>
     <meta name="robots" content="noindex" />
     <link rel="canonical" href="https://mlysappart.com/fr/" />
-    <!-- Fallback sans JS : FR par défaut -->
     <meta http-equiv="refresh" content="0; url=/fr/" />
-    <script is:inline>
-      const lang = (navigator.language || 'fr').toLowerCase();
-      window.location.replace(lang.startsWith('en') ? '/en/' : '/fr/');
-    </script>
+    <script is:inline>window.location.replace('/fr/');</script>
   </head>
-  <body>
-    <p style="font-family: sans-serif; padding: 2rem;">
-      Redirection… / Redirecting… <a href="/fr/">Continuer</a>
-    </p>
-  </body>
+  <body></body>
 </html>
